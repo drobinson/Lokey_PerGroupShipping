@@ -48,10 +48,9 @@ class Lokey_PerGroupShipping_Model_Observer
             if ($item->getParentItem()) {
                 $qty *= $item->getParentItem()->getQty();
             }
-            $qty -= $item->getFreeShipping();
             $qty = max($qty, 0);
 
-            if ($request->getFreeShipping() || $qty === 0) {
+            if ($qty === 0) {
                 continue;
             }
 
